@@ -4,7 +4,6 @@ body {
     font-family: 'Segoe UI', sans-serif;
     height: 100%;
     overflow: hidden;
-    background: linear-gradient(135deg, #c8e6c9, #4db6ac);
 
 
 }
@@ -24,7 +23,7 @@ body {
 }
 
 .form-container {
-    background-color: white;
+    background-color: rgb(254, 252, 252);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
@@ -44,8 +43,10 @@ body {
 .form-container input {
     padding: 12px;
     border-radius: 25px;
-    background-color: #eee;
     font-size: 14px;
+    background-color: white;
+    color: black;
+    border: 1px solid #121111;
 }
 
 .form-container button {
@@ -70,4 +71,11 @@ body {
 
 .form-container h2 {
     color: black;
+}
+
+.form-container a {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
 }

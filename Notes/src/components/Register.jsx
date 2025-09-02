@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import './Register.css'
 import { useDispatch } from 'react-redux';
 import { registerUser } from "../actions/RegisterApi";
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Register() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
         dispatch(registerUser(formData))
+        navigate('/login')
 
     }
 
@@ -31,7 +35,9 @@ function Register() {
                 <label htmlFor="password">Password:</label>
                 <input name="password" type="password" id="password" value={formData.password} onChange={handleChange} />
                 <button type="submit">Register</button>
-                <p className="line">Already have account? Sign in</p>
+                <Link to="/login">
+                    Already have account? Sign in
+                </Link>
 
             </form>
 
