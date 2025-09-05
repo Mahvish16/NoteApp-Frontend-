@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Register.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from "../actions/RegisterApi";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
@@ -8,13 +8,18 @@ import { Link } from "react-router-dom";
 function Register() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const registrationSuccess = useSelector(state => state.register.success);
+    const registrationError = useSelector(state => state.register.error);
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
         dispatch(registerUser(formData))
-        navigate('/login')
-
     }
+    useEffect(() => {
+        if (registrationSuccess) {
+            navigate('/login');
+        }
+    }, [registrationSuccess, navigate]);
 
     const [formData, setFormData] = useState({
         'name': '',
@@ -38,6 +43,12 @@ function Register() {
                 <Link to="/login">
                     Already have account? Sign in
                 </Link>
+                {registrationError?.email && (
+                    <p style={{ color: 'red' }}>{registrationError.email[0]}</p>
+                )}
+                {registrationError?.error && (
+                    <p style={{ color: 'red' }}>{registrationError.error}</p>
+                )}
 
             </form>
 

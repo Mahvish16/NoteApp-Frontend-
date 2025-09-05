@@ -1,24 +1,28 @@
-const initalstate = {
-    error: null,
+const initialState = {
     success: false,
-}
-const RegisterReducer = (state = initalstate, action) => {
+    error: null,
+    message: '',
+};
+
+const RegisterReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'REGISTER_SUCCESSFUL':
             return {
                 ...state,
-                success: action.payload,
+                success: true,
                 error: null,
-            }
+                message: action.payload,
+            };
         case 'REGISTER_FAILED':
             return {
                 ...state,
-                error: action.payload,
                 success: false,
-            }
+                error: action.payload,
+                message: '',
+            };
         default:
             return state;
     }
-}
+};
 
 export default RegisterReducer;

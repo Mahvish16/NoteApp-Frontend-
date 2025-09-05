@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../actions/LoginApi";
 import './Login.css';
 
 function Login() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const accessToken = useSelector(state => state.login.access);
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(loginUser(formData))
@@ -18,6 +22,12 @@ function Login() {
             ...formData, [e.target.name]: e.target.value
         })
     }
+    useEffect(() => {
+        if (accessToken) {
+            console.log('Access token:', accessToken);
+            navigate('/home')
+        }
+    }, [accessToken]);
     return (
         <div className="login-wrapper">
             <form className="login-container" onSubmit={handleSubmit}>
@@ -26,7 +36,7 @@ function Login() {
                 <input type="email" name="email" id="email" autoComplete="email" value={formData.email} onChange={handleChange} />
                 <label htmlFor="password">Password:</label>
                 <input type="password" name="password" id="password" autoComplete="current-password" value={formData.password} onChange={handleChange} />
-                <Link to="/home"><button>Login</button></Link>
+                <button type="submit">Login</button>
 
 
             </form>

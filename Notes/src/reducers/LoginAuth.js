@@ -1,20 +1,20 @@
 const initalstate = {
     error: null,
-    success: false,
+    token: null,
 }
 const LoginReducer = (state = initalstate, action) => {
     switch (action.type) {
-        case 'REGISTER_SUCCESSFUL':
+        case 'LOGIN_SUCCESSFUL':
             return {
                 ...state,
-                success: action.payload.access,
+                access: action.payload.access,
                 error: null,
             }
-        case 'REGISTER_FAILED':
+        case 'LOGIN_FAILED':
             return {
                 ...state,
                 error: action.payload,
-                success: false,
+                token: null,
             }
         default:
             return state;

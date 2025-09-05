@@ -8,7 +8,7 @@ function Home() {
             <h1>Welcome to NoteApp <LuNotepadText /> </h1>
             <p>Take notes, stay organized, and never forget what's important.</p>
             <div className="home-buttons">
-                <Link>
+                <Link to="/notes">
                     <button>Get Started</button>
                 </Link>
                 <Link>

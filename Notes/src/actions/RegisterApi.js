@@ -29,7 +29,7 @@ export const registerUser = (formData) => {
         catch (error) {
             dispatch({
                 type: 'REGISTER_FAILED',
-                payload: error.message
+                payload: { error: error.message },
             })
         }
     }
