@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNote } from "../actions/addApi";
-import './Add.css';
+import Navbar from "./Navbar";
+import './add.css';
 
 function Add() {
     const [title, setTitle] = useState("");
@@ -37,27 +38,26 @@ function Add() {
     };
 
     return (
-        <div className="full-page-note">
-            <form onSubmit={handleAddNote} className="note-form">
-                <h2>Add Your Note</h2>
-
-                <input
-                    type="text"
-                    placeholder="Enter note title..."
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-
-                <textarea
-                    placeholder="Enter note description..."
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-
-                <button type="submit">Save Note</button>
-            </form>
-
-        </div>
+        <>
+            <Navbar />
+            <div className="full-page-note">
+                <form onSubmit={handleAddNote} className="note-form">
+                    <h2>Add Your Note</h2>
+                    <input
+                        type="text"
+                        placeholder="Enter note title..."
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <textarea
+                        placeholder="Enter note description..."
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
+                    <button type="submit">Save Note</button>
+                </form>
+            </div>
+        </>
     );
 }
 
