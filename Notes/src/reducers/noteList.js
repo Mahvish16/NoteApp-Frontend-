@@ -25,17 +25,13 @@ const noteListReducer = (state = initialState, action) => {
                 loading: false,
                 error: action.payload,
             };
-        case "NOTE_ADD_SUCCESS":
+        case "DELETE_NOTE_SUCCESS":
             return {
                 ...state,
-                notes: [...state.notes, action.payload],
+                notes: state.notes.filter((note) => note.id !== action.payload),
                 error: null,
-            };
-        case "NOTE_ADD_FAILURE":
-            return {
-                ...state,
-                error: action.payload,
-            };
+            }
+
         default:
             return state;
     }

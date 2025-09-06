@@ -35,6 +35,16 @@
     cursor: pointer;
 }
 
-.navbar-links li a:hover {
+.navbar-links li button {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+}
+
+.navbar-links li button:hover {
     text-decoration: underline;
 }

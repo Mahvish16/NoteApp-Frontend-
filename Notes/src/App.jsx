@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Add from './components/addNotes';
 import NoteList from './components/notesList';
+import Edit from './components/editNotes';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -17,6 +18,8 @@ function App() {
           <Route path='home/' element={<Home />} />
           <Route path='notes/' element={<Add />} />
           <Route path='/NoteList' element={<NoteList />} />
+          <Route path="/notes/edit/:id" element={<Edit />} />
+
         </Routes>
       </div>
     </Router>

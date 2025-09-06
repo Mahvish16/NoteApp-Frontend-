@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './noteList.css';
 import { noteList } from "../actions/noteList";
+import { deleteNote } from "../actions/deleteNote";
+
+
 function NoteList() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const notes = useSelector((state) => state.notesList.notes);
     const error = useSelector((state) => state.notesList.error);
@@ -14,6 +19,15 @@ function NoteList() {
             dispatch(noteList(token));
         }
     }, [dispatch, token]);
+    const handleEditClick = (id) => {
+        navigate(`/notes/edit/${id}`);
+    };
+    const handleDeleteClick = (id) => {
+        if (window.confirm("Are you sure you want to delete this note?")) {
+            dispatch(deleteNote(token, id));
+        }
+    };
+
 
 
     return (
@@ -34,8 +48,8 @@ function NoteList() {
                                     <p>{note.description}</p>
                                 </div>
                                 <div className="note-actions">
-                                    <button className="edit-btn">Edit</button>
-                                    <button className="delete-btn">Delete</button>
+                                    <button className="edit-btn" onClick={() => handleEditClick(note.id)}>Edit</button>
+                                    <button className="delete-btn" onClick={() => handleDeleteClick(note.id)}>Delete</button>
                                 </div>
                             </li>
                         ))}

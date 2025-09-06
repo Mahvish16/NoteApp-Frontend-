@@ -4,7 +4,7 @@ const initalstate = {
 }
 const LoginReducer = (state = initalstate, action) => {
     switch (action.type) {
-        case 'LOGIN_SUCCESSFUL':
+        case 'LOGIN_SUCCESS':
             return {
                 ...state,
                 access: action.payload.access,
@@ -16,6 +16,12 @@ const LoginReducer = (state = initalstate, action) => {
                 error: action.payload,
                 token: null,
             }
+        case 'LOGOUT':
+            return {
+                ...state,
+                access: null,
+                error: null,
+            };
         default:
             return state;
     }

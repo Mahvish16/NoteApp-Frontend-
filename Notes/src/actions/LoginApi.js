@@ -12,7 +12,7 @@ export const loginUser = (formData) => {
             const data = await response.json();
             if (response.ok) {
                 dispatch({
-                    type: 'LOGIN_SUCCESSFUL',
+                    type: 'LOGIN_SUCCESS',
                     payload: {
                         access: data.access,
                         refresh: data.refresh,
